@@ -6,31 +6,31 @@ on:
       - hw*
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
         run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Check out code
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v3
         with:
           python-version: "3.11"
 
-      - name: Check out code
-        uses: actions/checkout@v4
-
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry==1.7.1
+          poetry install
+  
       - name: Lint with Ruff
         run: |
           pip install ruff
           ruff --output-format=github .
         continue-on-error: true
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install poetry==1.7.1
-          poetry install --sync --no-root
 
       - name: Run unit tests
         run: |
