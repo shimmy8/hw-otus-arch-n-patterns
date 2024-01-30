@@ -19,7 +19,7 @@ def solve(a: float, b: float, c: float, eps: float = 1e-5) -> list[float]:
     if abs(a) < eps:
         raise ValueError
 
-    if d < eps:
+    if d < 0:
         return []
     if d > 0:
         return [(-b + d**0.5) / (2 * a), (-b - d**0.5) / (2 * a)]
