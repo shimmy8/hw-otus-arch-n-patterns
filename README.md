@@ -1,2 +1,2 @@
 # hw-otus-arch-n-patterns
-Homeworks for Architecture and patterns cource
+Homeworks for Architecture and patterns course
