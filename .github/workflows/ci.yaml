@@ -35,4 +35,4 @@ jobs:
       - name: Run unit tests
         run: |
           poetry run pytest
-        working-directory: ${{ env.BRANCH }}
+        working-directory: space_battle
