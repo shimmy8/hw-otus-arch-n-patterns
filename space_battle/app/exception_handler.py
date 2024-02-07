@@ -7,7 +7,6 @@ class ExceptionHandler:
     def handle(self, cmd: ICommand, exc: Exception) -> ICommand:
         cmd_name, exc_name = cmd.__class__.__name__, exc.__class__.__name__
         handler = self.__command_exception_handlers[cmd_name][exc_name]
-        print("H", handler)
         return handler
 
     def register_handler(
