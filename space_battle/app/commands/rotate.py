@@ -1,6 +1,7 @@
 from typing import Protocol
 
 from app.data_types.direction import Direction
+from app.commands.base import ICommand
 
 
 class IRotateble(Protocol):
@@ -14,7 +15,7 @@ class IRotateble(Protocol):
         raise NotImplementedError()
 
 
-class Rotate:
+class Rotate(ICommand):
     obj: IRotateble
 
     def __init__(self, rotateble_obj: IRotateble) -> None:
